@@ -88,7 +88,7 @@ export default function HomeScreen({ onFestivalClick }: { onFestivalClick?: (fes
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-r from-red-500 via-green-500 to-red-500 text-white p-4 rounded-2xl shadow-lg mb-4 relative overflow-hidden"
+          className="bg-gradient-to-r from-maroon-400 via-sage-400 to-maroon-400 text-white p-4 rounded-2xl shadow-lg mb-4 relative overflow-hidden"
         >
           <div className="flex items-center justify-center gap-3 relative z-10">
             <span className="text-2xl">🎄</span>
@@ -134,7 +134,7 @@ export default function HomeScreen({ onFestivalClick }: { onFestivalClick?: (fes
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="bg-gradient-to-br from-[#E17735] to-[#842B2B] border-0 shadow-xl rounded-3xl overflow-hidden">
+          <Card className="bg-gradient-to-br from-[#5B8A8C] to-[#C97B84] border-0 shadow-xl rounded-3xl overflow-hidden">
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
                 <div className="text-4xl">🌞</div>
@@ -156,16 +156,16 @@ export default function HomeScreen({ onFestivalClick }: { onFestivalClick?: (fes
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-        <Card className="bg-gradient-to-br from-[#FFF8E7] to-[#C8A15A]/30 border border-[#C8A15A]/30 shadow-lg rounded-3xl">
+        <Card className="bg-gradient-to-br from-[#F7F1E8] to-[#D9A95C]/30 border border-[#D9A95C]/30 shadow-lg rounded-3xl">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <Sparkles className="w-6 h-6 text-[#E17735] flex-shrink-0 mt-1" />
+              <Sparkles className="w-6 h-6 text-[#5B8A8C] flex-shrink-0 mt-1" />
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-[#1E2A38] mb-2">🔮 Quote of the Day</h3>
-                <p className="text-[#1E2A38] text-base leading-relaxed italic">
+                <h3 className="text-lg font-bold text-[#8E84A6] mb-2">🔮 Quote of the Day</h3>
+                <p className="text-[#8E84A6] text-base leading-relaxed italic">
                   "{quoteOfTheDay}"
                 </p>
-                <p className="text-sm text-[#842B2B]/70 mt-2 font-medium">— Sai Baba</p>
+                <p className="text-sm text-[#C97B84]/70 mt-2 font-medium">— Sai Baba</p>
               </div>
             </div>
           </CardContent>
@@ -180,7 +180,7 @@ export default function HomeScreen({ onFestivalClick }: { onFestivalClick?: (fes
         className="space-y-4"
       >
         <div className="flex items-center gap-2">
-          <CalendarIcon className="w-6 h-6 text-[#E17735]" />
+          <CalendarIcon className="w-6 h-6 text-[#5B8A8C]" />
           <h2 className="text-2xl font-bold text-gray-900">📅 Upcoming Festivals</h2>
         </div>
 
@@ -212,7 +212,7 @@ export default function HomeScreen({ onFestivalClick }: { onFestivalClick?: (fes
                     <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-1">
                       {festival.name}
                     </h3>
-                    <p className="text-sm text-[#842B2B] font-semibold mb-2">
+                    <p className="text-sm text-[#C97B84] font-semibold mb-2">
                       {new Date(festival.date).toLocaleDateString('en-US', { 
                         month: 'long', 
                         day: 'numeric',

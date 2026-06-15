@@ -34,7 +34,7 @@
   }
   body {
     @apply text-gray-900;
-    background-color: #FFF8E7; /* Cream background - Calm Devotional theme */
+    background-color: #F7F1E8; /* Warm Sand background - Soft Peacock & Rose theme */
     font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -56,12 +56,12 @@
     scroll-behavior: smooth;
   }
 
-  /* Modern Typography - Calm Devotional Theme */
+  /* Modern Typography - Soft Peacock & Rose Theme */
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: #1E2A38;
+    color: #8E84A6;
   }
 
   h1 {
@@ -79,13 +79,13 @@
     line-height: 1.3;
   }
   
-  /* Calm Devotional Color Variables */
+  /* Soft Peacock & Rose Color Variables */
   :root {
-    --color-saffron: #E17735;
-    --color-cream: #FFF8E7;
-    --color-maroon: #842B2B;
-    --color-gold: #C8A15A;
-    --color-midnight: #1E2A38;
+    --color-saffron: #5B8A8C;
+    --color-cream: #F7F1E8;
+    --color-maroon: #C97B84;
+    --color-gold: #D9A95C;
+    --color-midnight: #8E84A6;
   }
 
   /* Apple-style gradient animation */
@@ -109,43 +109,43 @@
 @layer components {
   /* Traditional Festival Gradients */
   .festival-gradient {
-    background: linear-gradient(135deg, #ea580c 0%, #dc2626 50%, #db2777 100%);
+    background: linear-gradient(135deg, #5B8A8C 0%, #C97B84 50%, #8E84A6 100%);
   }
-  
+
   .spiritual-gradient {
-    background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+    background: linear-gradient(135deg, #D9A95C 0%, #C97B84 100%);
   }
-  
+
   .marathi-gradient {
-    background: linear-gradient(135deg, #fb923c 0%, #facc15 100%);
+    background: linear-gradient(135deg, #5B8A8C 0%, #D9A95C 100%);
   }
-  
+
   .hindu-gradient {
-    background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+    background: linear-gradient(135deg, #5B8A8C 0%, #C97B84 100%);
   }
-  
+
   .diwali-gradient {
-    background: linear-gradient(135deg, #fb923c 0%, #facc15 100%);
+    background: linear-gradient(135deg, #D9A95C 0%, #C8AB7D 100%);
   }
-  
+
   .holi-gradient {
-    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #C97B84 0%, #8E84A6 50%, #5B8A8C 100%);
   }
-  
+
   .ganesh-gradient {
-    background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+    background: linear-gradient(135deg, #D9A95C 0%, #BC8C44 100%);
   }
-  
+
   .navratri-gradient {
-    background: linear-gradient(135deg, #dc2626 0%, #f97316 50%, #facc15 100%);
+    background: linear-gradient(135deg, #C97B84 0%, #D9A95C 50%, #7E9B76 100%);
   }
-  
+
   .saffron-gradient {
-    background: linear-gradient(135deg, #ff9933 0%, #ff6600 100%);
+    background: linear-gradient(135deg, #5B8A8C 0%, #4A7173 100%);
   }
-  
+
   .marigold-gradient {
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, #D9A95C 0%, #BC8C44 100%);
   }
   
   .festive-bg {
@@ -165,52 +165,52 @@
     @apply font-marathi text-lg leading-relaxed text-emerald-700;
   }
   
-  /* Vibrant Indian Festival Decorations */
+  /* Chill Indian Festival Decorations */
   .lotus-pattern {
-    background-image: radial-gradient(circle at 50% 50%, #ff6b6b 2px, transparent 2px);
+    background-image: radial-gradient(circle at 50% 50%, #C97B84 2px, transparent 2px);
     background-size: 25px 25px;
   }
-  
+
   .diya-glow {
-    box-shadow: 0 0 30px rgba(255, 107, 107, 0.4), 0 0 60px rgba(254, 202, 87, 0.3);
+    box-shadow: 0 0 30px rgba(201, 123, 132, 0.35), 0 0 60px rgba(217, 169, 92, 0.30);
   }
-  
+
   .rangoli-border {
-    border-image: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff) 1;
+    border-image: linear-gradient(45deg, #C97B84, #D9A95C, #5B8A8C, #8E84A6, #7E9B76) 1;
   }
-  
+
   .festival-sparkle {
-    background-image: 
-      radial-gradient(circle at 20% 20%, #ffd700 1px, transparent 1px),
-      radial-gradient(circle at 80% 80%, #ff6b6b 1px, transparent 1px),
-      radial-gradient(circle at 40% 60%, #48dbfb 1px, transparent 1px);
+    background-image:
+      radial-gradient(circle at 20% 20%, #D9A95C 1px, transparent 1px),
+      radial-gradient(circle at 80% 80%, #C97B84 1px, transparent 1px),
+      radial-gradient(circle at 40% 60%, #5B8A8C 1px, transparent 1px);
     background-size: 50px 50px, 30px 30px, 40px 40px;
   }
-  
+
   .mandala-pattern {
-    background-image: 
-      radial-gradient(circle at center, transparent 20px, #ff9ff3 21px, transparent 22px),
-      radial-gradient(circle at center, transparent 40px, #54a0ff 41px, transparent 42px);
+    background-image:
+      radial-gradient(circle at center, transparent 20px, #8E84A6 21px, transparent 22px),
+      radial-gradient(circle at center, transparent 40px, #5B8A8C 41px, transparent 42px);
     background-size: 60px 60px;
   }
-  
+
   .festival-lights {
-    background: linear-gradient(45deg, 
-      #ff6b6b 0%, #feca57 25%, #48dbfb 50%, #ff9ff3 75%, #54a0ff 100%);
+    background: linear-gradient(45deg,
+      #C97B84 0%, #D9A95C 25%, #5B8A8C 50%, #8E84A6 75%, #7E9B76 100%);
     background-size: 200% 200%;
     animation: festivalLights 3s ease-in-out infinite;
   }
-  
+
   @keyframes festivalLights {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
-  
+
   .fireworks {
-    background-image: 
-      radial-gradient(circle at 10% 20%, #ffd700 2px, transparent 2px),
-      radial-gradient(circle at 90% 80%, #ff6b6b 2px, transparent 2px),
-      radial-gradient(circle at 50% 50%, #48dbfb 2px, transparent 2px);
+    background-image:
+      radial-gradient(circle at 10% 20%, #D9A95C 2px, transparent 2px),
+      radial-gradient(circle at 90% 80%, #C97B84 2px, transparent 2px),
+      radial-gradient(circle at 50% 50%, #5B8A8C 2px, transparent 2px);
     background-size: 80px 80px, 60px 60px, 100px 100px;
     animation: fireworks 4s ease-in-out infinite;
   }
@@ -230,7 +230,7 @@
   .app-header {
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+    border-bottom: 1px solid rgba(217, 169, 92, 0.12);
   }
   
   .app-content {
@@ -241,7 +241,7 @@
   .app-nav {
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.95);
-    border-top: 1px solid rgba(251, 191, 36, 0.1);
+    border-top: 1px solid rgba(217, 169, 92, 0.12);
   }
   
   /* Festival Decor Elements */
@@ -295,13 +295,13 @@
 
   /* Paisley and Mandala Background Patterns */
   .paisley-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 20c-5 0-10 5-10 10s5 10 10 10c3 0 5-1 7-3 2-2 3-4 3-7 0-5-5-10-10-10zm0 2c4 0 8 4 8 8 0 2-1 4-2 5-2 2-3 3-6 3-4 0-8-4-8-8s4-8 8-8z' fill='%23ff9800' fill-opacity='0.05'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 20c-5 0-10 5-10 10s5 10 10 10c3 0 5-1 7-3 2-2 3-4 3-7 0-5-5-10-10-10zm0 2c4 0 8 4 8 8 0 2-1 4-2 5-2 2-3 3-6 3-4 0-8-4-8-8s4-8 8-8z' fill='%235B8A8C' fill-opacity='0.05'/%3E%3C/svg%3E");
   }
 
   .mandala-bg {
-    background-image: radial-gradient(circle at 50% 50%, rgba(255, 152, 0, 0.05) 2px, transparent 2px),
-                      radial-gradient(circle at 25% 25%, rgba(233, 30, 99, 0.03) 2px, transparent 2px),
-                      radial-gradient(circle at 75% 75%, rgba(76, 175, 80, 0.03) 2px, transparent 2px);
+    background-image: radial-gradient(circle at 50% 50%, rgba(217, 169, 92, 0.05) 2px, transparent 2px),
+                      radial-gradient(circle at 25% 25%, rgba(201, 123, 132, 0.04) 2px, transparent 2px),
+                      radial-gradient(circle at 75% 75%, rgba(126, 155, 118, 0.04) 2px, transparent 2px);
     background-size: 50px 50px, 40px 40px, 60px 60px;
   }
 
@@ -328,11 +328,11 @@
 
   .shimmer {
     animation: shimmer 2s infinite linear;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(255, 152, 0, 0.1) 25%, 
-      rgba(255, 152, 0, 0.2) 50%, 
-      rgba(255, 152, 0, 0.1) 75%, 
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(217, 169, 92, 0.1) 25%,
+      rgba(217, 169, 92, 0.2) 50%,
+      rgba(217, 169, 92, 0.1) 75%,
       transparent 100%);
     background-size: 1000px 100%;
   }
@@ -340,10 +340,10 @@
   /* Pulse glow effect for important elements */
   @keyframes pulse-glow {
     0%, 100% {
-      box-shadow: 0 0 20px rgba(255, 152, 0, 0.3);
+      box-shadow: 0 0 20px rgba(91, 138, 140, 0.3);
     }
     50% {
-      box-shadow: 0 0 40px rgba(255, 152, 0, 0.6), 0 0 60px rgba(233, 30, 99, 0.4);
+      box-shadow: 0 0 40px rgba(91, 138, 140, 0.5), 0 0 60px rgba(201, 123, 132, 0.35);
     }
   }
 

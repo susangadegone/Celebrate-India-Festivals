@@ -57,7 +57,7 @@ export default function HomePage() {
   const isChristmasWeek = isDecember && new Date().getDate() >= 20
 
   return (
-    <div className="min-h-screen bg-[#FFF8E7] app-container relative pb-20 md:pb-0 safe-area-inset overflow-hidden">
+    <div className="min-h-screen bg-[#F7F1E8] app-container relative pb-20 md:pb-0 safe-area-inset overflow-hidden">
       {/* Festive Decorations - Floating Elements */}
       {isDecember && (
         <>
@@ -139,8 +139,8 @@ export default function HomePage() {
         animate={{ opacity: 1, y: 0 }}
         className={`sticky top-0 z-50 backdrop-blur-xl border-b shadow-sm safe-top relative ${
           isDecember 
-            ? 'bg-gradient-to-r from-[#FFF8E7] via-[#FFE5E5] to-[#FFF8E7] border-[#C8A15A]/30' 
-            : 'bg-[#FFF8E7]/95 border-[#C8A15A]/20'
+            ? 'bg-gradient-to-r from-[#F7F1E8] via-[#F5DEE1] to-[#F7F1E8] border-[#D9A95C]/30'
+            : 'bg-[#F7F1E8]/95 border-[#D9A95C]/20'
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -152,14 +152,14 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center gap-2 md:gap-4 group touch-manipulation"
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#E17735] to-[#842B2B] rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg group-active:scale-95 transition-transform">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#5B8A8C] to-[#C97B84] rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg group-active:scale-95 transition-transform">
                 <span className="text-xl md:text-2xl">🙏</span>
               </div>
               <div className="text-left hidden sm:block">
-                <h1 className="text-lg md:text-xl font-bold text-[#1E2A38]">
+                <h1 className="text-lg md:text-xl font-bold text-[#8E84A6]">
                   Festival Calendar
                 </h1>
-                <p className="text-xs text-[#842B2B] font-medium">Cultural Heritage</p>
+                <p className="text-xs text-[#C97B84] font-medium">Cultural Heritage</p>
               </div>
             </motion.button>
             
@@ -176,14 +176,14 @@ export default function HomePage() {
                     whileTap={{ scale: 0.95 }}
                     className={`relative px-4 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center gap-2 ${
                       isActive 
-                        ? 'text-white bg-gradient-to-r from-[#E17735] to-[#842B2B] shadow-lg' 
-                        : 'text-gray-600 hover:text-[#E17735] hover:bg-[#FFF8E7]'
+                        ? 'text-white bg-gradient-to-r from-[#5B8A8C] to-[#C97B84] shadow-lg' 
+                        : 'text-gray-600 hover:text-[#5B8A8C] hover:bg-[#F7F1E8]'
                     }`}
                 >
                     {isActive && (
                       <motion.div
                         layoutId="activeNavTab"
-                        className="absolute inset-0 bg-gradient-to-r from-[#E17735] to-[#842B2B] rounded-lg"
+                        className="absolute inset-0 bg-gradient-to-r from-[#5B8A8C] to-[#C97B84] rounded-lg"
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
                     )}
@@ -217,7 +217,7 @@ export default function HomePage() {
       <motion.nav 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#FFF8E7]/98 backdrop-blur-xl border-t border-[#C8A15A]/20 shadow-2xl safe-bottom"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#F7F1E8]/98 backdrop-blur-xl border-t border-[#D9A95C]/20 shadow-2xl safe-bottom"
       >
         <div className="container mx-auto px-2 max-w-7xl">
           <div className="flex justify-around items-center h-20">
@@ -236,7 +236,7 @@ export default function HomePage() {
                     {isActive && (
                       <motion.div
                       layoutId="activeMobileTab"
-                      className="absolute inset-0 bg-gradient-to-r from-[#E17735] to-[#842B2B] rounded-2xl mx-1"
+                      className="absolute inset-0 bg-gradient-to-r from-[#5B8A8C] to-[#C97B84] rounded-2xl mx-1"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}

@@ -58,18 +58,18 @@ export default function FestivalsListScreen() {
         animate={{ opacity: 1, y: 0 }}
         className="relative"
       >
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#E17735]" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#5B8A8C]" />
         <input
           type="text"
           placeholder="Search festivals..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-12 pr-12 py-4 bg-white border-2 border-[#C8A15A]/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#E17735] focus:border-[#E17735] transition-all shadow-sm touch-manipulation"
+          className="w-full pl-12 pr-12 py-4 bg-white border-2 border-[#D9A95C]/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#5B8A8C] focus:border-[#5B8A8C] transition-all shadow-sm touch-manipulation"
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-[#E17735] rounded-lg touch-manipulation"
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-[#5B8A8C] rounded-lg touch-manipulation"
           >
             <X className="w-5 h-5" />
           </button>
@@ -100,7 +100,7 @@ export default function FestivalsListScreen() {
                     <h3 className="text-lg font-bold text-gray-900 mb-1">
                       {festival.name}
                     </h3>
-                    <p className="text-sm text-[#842B2B] font-semibold">
+                    <p className="text-sm text-[#C97B84] font-semibold">
                       {new Date(festival.date).toLocaleDateString('en-US', { 
                         month: 'long', 
                         day: 'numeric',

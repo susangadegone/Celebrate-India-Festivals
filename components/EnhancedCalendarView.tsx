@@ -113,7 +113,7 @@ export default function EnhancedCalendarView({ country = 'india' }: EnhancedCale
         date: apiFest.full_date || `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${apiFest.date.padStart(2, '0')}`,
         region: 'Pan-Indian' as const,
         category: 'religious',
-        color: '#E17735',
+        color: '#5B8A8C',
         tagline: `Celebrated on ${apiFest.day}`,
         heroImage: 'https://images.unsplash.com/photo-1608848941953-37c9933a94a8?w=800&h=600&fit=crop&q=85&auto=format',
         overview: { brief: `Indian festival celebrated on ${apiFest.day}` },

@@ -59,11 +59,11 @@ export default function MarathiFestivals() {
       >
         <div className="flex items-center justify-center gap-3 mb-4">
           <span className="text-5xl">🪔</span>
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-saffron-500 via-maroon-500 to-rose-500 bg-clip-text text-transparent">
             Marathi Festivals
           </h2>
         </div>
-        <p className="text-lg text-orange-700 font-semibold">
+        <p className="text-lg text-saffron-700 font-semibold">
           मराठी त्योहार - Celebrate Maharashtra traditions
         </p>
       </motion.div>
@@ -80,7 +80,7 @@ export default function MarathiFestivals() {
             className="cursor-pointer group"
             onClick={() => setSelectedFestival(festival)}
           >
-            <Card className="overflow-hidden border-2 border-orange-200 hover:border-orange-400 hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-white to-orange-50">
+            <Card className="overflow-hidden border-2 border-saffron-200 hover:border-saffron-400 hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-white to-saffron-50">
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src={festival.heroImage} 
@@ -89,7 +89,7 @@ export default function MarathiFestivals() {
                   crossOrigin="anonymous"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-orange-900/70 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-saffron-900/70 via-black/20 to-transparent" />
                 <div className="absolute top-3 right-3 flex gap-2">
                   <motion.button
                     whileTap={{ scale: 0.9 }}
@@ -120,8 +120,8 @@ export default function MarathiFestivals() {
               <CardContent className="p-5">
                 <div className="flex items-center gap-2 mb-3 flex-wrap">
                   <div className="flex items-center gap-1">
-                    <CalendarIcon className="w-4 h-4 text-orange-600" />
-                    <span className="text-sm text-orange-700 font-bold">
+                    <CalendarIcon className="w-4 h-4 text-saffron-600" />
+                    <span className="text-sm text-saffron-700 font-bold">
                       {new Date(festival.date).toLocaleDateString('en-US', { 
                         month: 'long', 
                         day: 'numeric',
@@ -147,7 +147,7 @@ export default function MarathiFestivals() {
                 <p className="text-sm text-gray-700 line-clamp-2 mb-4 leading-relaxed">{festival.tagline}</p>
                 <div className="flex items-center gap-2 flex-wrap mb-3">
                   {festival.region && (
-                    <span className="px-3 py-1.5 rounded-lg text-xs font-bold border-2 bg-orange-100 text-orange-700 border-orange-300">
+                    <span className="px-3 py-1.5 rounded-lg text-xs font-bold border-2 bg-saffron-100 text-saffron-700 border-saffron-300">
                       🪔 {festival.region}
                     </span>
                   )}
@@ -165,7 +165,7 @@ export default function MarathiFestivals() {
                   </div>
                   )}
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-xs text-orange-600 font-semibold flex items-center gap-1">
+                  <span className="text-xs text-saffron-600 font-semibold flex items-center gap-1">
                     🍽️ {festival.recipes.length} recipes
                   </span>
                 </div>

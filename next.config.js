@@ -2,7 +2,7 @@
 // GitHub Pages: https://<user>.github.io/<repo>/ → basePath = /repo-name
 // Empty basePath in dev so http://localhost:3000/ works without a subpath.
 const basePath =
-  process.env.NODE_ENV === 'development' ? '' : '/india-festivals'
+  process.env.NODE_ENV === 'development' ? '' : '/Celebrate-India-Festivals'
 
 const nextConfig = {
   images: {

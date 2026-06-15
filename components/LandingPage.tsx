@@ -211,29 +211,29 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
               >
                 {/* Puja video with candles and offerings (primary) - MP4 first for best browser support */}
                 <source
-                  src="/india-festivals/videos/puja-candles-offerings.mp4"
+                  src="/Celebrate-India-Festivals/videos/puja-candles-offerings.mp4"
                   type="video/mp4"
                 />
                 <source
-                  src="/india-festivals/videos/4391103-hd_1920_1080_25fps.mp4"
+                  src="/Celebrate-India-Festivals/videos/4391103-hd_1920_1080_25fps.mp4"
                   type="video/mp4"
                 />
                 {/* Fallback to .mov if MP4 not available */}
                 <source
-                  src="/india-festivals/videos/puja-candles-offerings.mov"
+                  src="/Celebrate-India-Festivals/videos/puja-candles-offerings.mov"
                   type="video/quicktime"
                 />
                 <source
-                  src="/india-festivals/videos/4391103-hd_1920_1080_25fps.mov"
+                  src="/Celebrate-India-Festivals/videos/4391103-hd_1920_1080_25fps.mov"
                   type="video/quicktime"
                 />
                 {/* Additional fallbacks */}
                 <source
-                  src="/india-festivals/videos/india-background.mp4"
+                  src="/Celebrate-India-Festivals/videos/india-background.mp4"
                   type="video/mp4"
                 />
                 <source
-                  src="/india-festivals/videos/india-background.mov"
+                  src="/Celebrate-India-Festivals/videos/india-background.mov"
                   type="video/quicktime"
                 />
               </video>

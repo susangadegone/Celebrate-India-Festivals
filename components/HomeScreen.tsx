@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Calendar as CalendarIcon, Sparkles } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
+import { CalendarIcon } from 'lucide-react'
 import comprehensiveFestivalsData from '@/data/comprehensive-festivals.json'
 import saiBabaQuotes from '@/data/sai-baba-quotes.json'
 import thursdayBlessings from '@/data/thursday-blessings.json'
@@ -15,7 +14,31 @@ interface Festival {
   date: string
   heroImage: string
   tagline?: string
+  category?: string
+  region?: string
+  nameDevanagari?: string
   [key: string]: any
+}
+
+const CATEGORY_STYLE: Record<string, { bar: string; iconBg: string }> = {
+  harvest:  { bar: '#D4A017', iconBg: '#FFF8DC' },
+  national: { bar: '#2A7D6E', iconBg: '#E0F4F0' },
+  cultural: { bar: '#8B2252', iconBg: '#FCE4EC' },
+  religious:{ bar: '#B5621B', iconBg: '#FFF0E0' },
+}
+
+function getFestivalStyle(festival: Festival) {
+  if (festival.region === 'Marathi') return { bar: '#D4A017', iconBg: '#FFF8DC' }
+  return CATEGORY_STYLE[festival.category ?? ''] ?? CATEGORY_STYLE.religious
+}
+
+function getFestivalIcon(category?: string, region?: string) {
+  if (region === 'Marathi') return '🪔'
+  if (region === 'Hindi') return '🕉️'
+  if (category === 'national') return '🇮🇳'
+  if (category === 'harvest') return '🌾'
+  if (category === 'cultural') return '🎭'
+  return '🙏'
 }
 
 export default function HomeScreen({ onFestivalClick }: { onFestivalClick?: (festival: Festival) => void }) {
@@ -31,207 +54,198 @@ export default function HomeScreen({ onFestivalClick }: { onFestivalClick?: (fes
     else setGreeting('Good Evening')
   }, [])
 
-  // Get quote of the day (based on date)
   const quoteOfTheDay = useMemo(() => {
     const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / 86400000)
     return saiBabaQuotes[dayOfYear % saiBabaQuotes.length]
   }, [])
 
-  // Get Thursday blessing
   const thursdayBlessing = useMemo(() => {
     if (!isThursday) return null
     const dayOfMonth = today.getDate()
     return thursdayBlessings[dayOfMonth % thursdayBlessings.length]
   }, [isThursday])
 
-  // Get upcoming festivals (next 5)
   const upcomingFestivals = useMemo(() => {
-    const festivals = comprehensiveFestivalsData as Festival[]
-    const todayStr = today.toISOString().split('T')[0]
-    
-    return festivals
-      .filter(festival => {
-        const festivalDate = new Date(festival.date)
-        return festivalDate >= today
-      })
+    return (comprehensiveFestivalsData as Festival[])
+      .filter(f => new Date(f.date) >= today)
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
       .slice(0, 5)
   }, [])
 
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString('en-US', { 
-      weekday: 'long', 
-      month: 'long', 
-      day: 'numeric',
-      year: 'numeric'
-    })
+  const formatDate = (date: Date) =>
+    date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })
+
+  const daysUntil = (dateStr: string) => {
+    const diff = Math.ceil((new Date(dateStr).getTime() - today.getTime()) / 86400000)
+    return diff === 0 ? 'Today' : diff === 1 ? 'Tomorrow' : `${diff} days`
   }
 
   if (selectedFestival) {
-    return (
-      <FestivalDetail 
-        festival={selectedFestival as any} 
-        onClose={() => setSelectedFestival(null)}
-      />
-    )
+    return <FestivalDetail festival={selectedFestival as any} onClose={() => setSelectedFestival(null)} />
   }
 
-  // Check if it's December (festive season)
-  const isDecember = today.getMonth() === 11
-  const isChristmasWeek = isDecember && today.getDate() >= 20
-  const isNewYearWeek = today.getMonth() === 0 && today.getDate() <= 7
-
   return (
-    <div className="space-y-6 pb-6 relative">
-      {/* Festive Banner for December */}
-      {isDecember && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-r from-maroon-400 via-sage-400 to-maroon-400 text-white p-4 rounded-2xl shadow-lg mb-4 relative overflow-hidden"
-        >
-          <div className="flex items-center justify-center gap-3 relative z-10">
-            <span className="text-2xl">🎄</span>
-            <div className="text-center">
-              <h3 className="font-bold text-lg">Festive Season Blessings!</h3>
-              <p className="text-sm opacity-90">May this season bring you joy, peace, and prosperity 🙏</p>
-            </div>
-            <span className="text-2xl">🪔</span>
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-20">
-            {[...Array(10)].map((_, i) => (
-              <motion.span
-                key={i}
-                animate={{ rotate: [0, 360], scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
-                className="text-3xl"
-              >
-                ✨
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-      )}
+    <div className="space-y-6 pb-6">
 
-      {/* Greeting and Date */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="space-y-2"
-      >
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-          {greeting} 🙏 {isDecember && '🎄'} {isNewYearWeek && '🎉'}
+      {/* Greeting */}
+      <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }}>
+        <p
+          className="text-sm font-medium mb-1 tracking-wide uppercase"
+          style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+        >
+          {greeting}
+        </p>
+        <h1
+          className="text-3xl md:text-4xl font-semibold leading-snug"
+          style={{ fontFamily: 'var(--font-inknut), Georgia, serif', color: 'var(--color-text)' }}
+        >
+          Festival Calendar
         </h1>
-        <p className="text-lg text-gray-600">
-          Today is: {formatDate(today)}
+        <p
+          className="text-sm mt-1"
+          style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+        >
+          {formatDate(today)}
         </p>
       </motion.div>
 
-      {/* Thursday Blessing Card */}
+      {/* Thursday Blessing */}
       {isThursday && thursdayBlessing && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.15 }}
+          className="rounded-xl overflow-hidden"
+          style={{ background: '#FFF0E0', border: '1.5px solid var(--color-border)' }}
         >
-          <Card className="bg-gradient-to-br from-[#5B8A8C] to-[#C97B84] border-0 shadow-xl rounded-3xl overflow-hidden">
-            <CardContent className="p-6">
-              <div className="flex items-start gap-4">
-                <div className="text-4xl">🌞</div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white mb-2">Thursday Blessing</h3>
-                  <p className="text-white/95 text-base leading-relaxed">
-                    {thursdayBlessing}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <div style={{ height: '3px', background: 'var(--color-saffron)' }} />
+          <div className="p-5 flex items-start gap-4">
+            <span className="text-3xl">🌞</span>
+            <div>
+              <h3
+                className="text-base font-semibold mb-1"
+                style={{ fontFamily: 'var(--font-inknut), Georgia, serif', color: 'var(--color-text)' }}
+              >
+                Thursday Blessing
+              </h3>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+              >
+                {thursdayBlessing}
+              </p>
+            </div>
+          </div>
         </motion.div>
       )}
 
       {/* Quote of the Day */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
+        transition={{ delay: 0.2 }}
+        className="quote-block"
       >
-        <Card className="bg-gradient-to-br from-[#F7F1E8] to-[#D9A95C]/30 border border-[#D9A95C]/30 shadow-lg rounded-3xl">
-          <CardContent className="p-6">
-            <div className="flex items-start gap-4">
-              <Sparkles className="w-6 h-6 text-[#5B8A8C] flex-shrink-0 mt-1" />
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-[#8E84A6] mb-2">🔮 Quote of the Day</h3>
-                <p className="text-[#8E84A6] text-base leading-relaxed italic">
-                  "{quoteOfTheDay}"
-                </p>
-                <p className="text-sm text-[#C97B84]/70 mt-2 font-medium">— Sai Baba</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <p
+          className="text-xs font-semibold tracking-widest uppercase mb-2"
+          style={{ color: 'var(--color-marigold)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+        >
+          Quote of the Day
+        </p>
+        <p
+          className="text-sm leading-relaxed italic mb-2"
+          style={{ color: 'var(--color-text)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+        >
+          "{quoteOfTheDay}"
+        </p>
+        <p
+          className="text-xs font-semibold"
+          style={{ color: 'var(--color-saffron)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+        >
+          — Sai Baba
+        </p>
       </motion.div>
 
       {/* Upcoming Festivals */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="space-y-4"
+        transition={{ delay: 0.3 }}
+        className="space-y-3"
       >
-        <div className="flex items-center gap-2">
-          <CalendarIcon className="w-6 h-6 text-[#5B8A8C]" />
-          <h2 className="text-2xl font-bold text-gray-900">📅 Upcoming Festivals</h2>
+        <div className="flex items-center gap-2 mb-1">
+          <CalendarIcon className="w-4 h-4" style={{ color: 'var(--color-saffron)' }} />
+          <h2
+            className="text-sm font-semibold tracking-widest uppercase"
+            style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+          >
+            Upcoming Festivals
+          </h2>
         </div>
 
-        <div className="space-y-4">
-          {upcomingFestivals.map((festival, index) => (
+        {upcomingFestivals.map((festival, index) => {
+          const style = getFestivalStyle(festival)
+          const icon = getFestivalIcon(festival.category, festival.region)
+          return (
             <motion.div
               key={festival.id}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 + index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              transition={{ delay: 0.35 + index * 0.08 }}
+              whileTap={{ scale: 0.99 }}
+              onClick={() => setSelectedFestival(festival)}
+              className="cursor-pointer dot-corner"
+              style={{
+                background: 'var(--color-card)',
+                border: '1.5px solid var(--color-border)',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                transition: 'box-shadow 0.2s',
+              }}
             >
-              <Card 
-                className="bg-white border border-gray-200 shadow-lg hover:shadow-xl rounded-3xl overflow-hidden cursor-pointer touch-manipulation"
-                onClick={() => setSelectedFestival(festival)}
-              >
-                <div className="flex">
-                  <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
-                    <img
-                      src={festival.heroImage}
-                      alt={festival.name}
-                      className="w-full h-full object-cover"
-                      crossOrigin="anonymous"
-                      loading="lazy"
-                    />
-                  </div>
-                  <CardContent className="p-4 md:p-6 flex-1 flex flex-col justify-center">
-                    <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-1">
-                      {festival.name}
-                    </h3>
-                    <p className="text-sm text-[#C97B84] font-semibold mb-2">
-                      {new Date(festival.date).toLocaleDateString('en-US', { 
-                        month: 'long', 
-                        day: 'numeric',
-                        year: 'numeric'
-                      })}
-                    </p>
-                    {festival.tagline && (
-                      <p className="text-sm text-gray-600 line-clamp-2">
-                        {festival.tagline}
-                      </p>
-                    )}
-                  </CardContent>
+              <div style={{ height: '3px', background: style.bar }} />
+              <div className="flex items-center gap-4 p-4">
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                  style={{ background: style.iconBg, border: '1.5px solid var(--color-border)' }}
+                >
+                  {icon}
                 </div>
-              </Card>
+                <div className="flex-1 min-w-0">
+                  <h3
+                    className="text-base font-semibold leading-snug truncate"
+                    style={{ fontFamily: 'var(--font-inknut), Georgia, serif', color: 'var(--color-text)' }}
+                  >
+                    {festival.name}
+                  </h3>
+                  {festival.nameDevanagari && (
+                    <p className="text-xs" style={{ color: style.bar, fontFamily: 'var(--font-inknut), Georgia, serif' }}>
+                      {festival.nameDevanagari}
+                    </p>
+                  )}
+                  <p
+                    className="text-xs mt-0.5"
+                    style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+                  >
+                    {new Date(festival.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                  </p>
+                </div>
+                <span
+                  className="text-xs font-semibold px-3 py-1.5 rounded-full flex-shrink-0"
+                  style={{
+                    background: '#FFF0E0',
+                    color: 'var(--color-saffron)',
+                    border: '1px solid var(--color-border)',
+                    fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                  }}
+                >
+                  {daysUntil(festival.date)}
+                </span>
+              </div>
             </motion.div>
-          ))}
-        </div>
+          )
+        })}
       </motion.div>
     </div>
   )
 }
-

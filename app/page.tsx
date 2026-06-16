@@ -52,96 +52,20 @@ export default function HomePage() {
     return <LandingPage onEnter={handleEnterApp} />
   }
 
-  // Check if it's December (festive season)
-  const isDecember = new Date().getMonth() === 11
-  const isChristmasWeek = isDecember && new Date().getDate() >= 20
-
   return (
-    <div className="min-h-screen bg-[#F7F1E8] app-container relative pb-20 md:pb-0 safe-area-inset overflow-hidden">
-      {/* Festive Decorations - Floating Elements */}
-      {isDecember && (
-        <>
-          {/* Floating Diyas and Stars */}
-          <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-            {[...Array(12)].map((_, i) => (
-              <motion.div
-                key={`star-${i}`}
-                className="absolute"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  rotate: [0, 360],
-                  opacity: [0.3, 0.7, 0.3],
-                }}
-                transition={{
-                  duration: 3 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2,
-                }}
-              >
-                <span className="text-2xl">✨</span>
-              </motion.div>
-            ))}
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={`diya-${i}`}
-                className="absolute"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -15, 0],
-                  scale: [1, 1.1, 1],
-                  opacity: [0.2, 0.5, 0.2],
-                }}
-                transition={{
-                  duration: 4 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 3,
-                }}
-              >
-                <span className="text-xl">🪔</span>
-              </motion.div>
-            ))}
-            {isChristmasWeek && [...Array(6)].map((_, i) => (
-              <motion.div
-                key={`snowflake-${i}`}
-                className="absolute"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, 100],
-                  rotate: [0, 360],
-                  opacity: [0.4, 0],
-                }}
-                transition={{
-                  duration: 5 + Math.random() * 3,
-                  repeat: Infinity,
-                  delay: Math.random() * 5,
-                }}
-              >
-                <span className="text-lg">❄️</span>
-              </motion.div>
-            ))}
-          </div>
-        </>
-      )}
-
-      {/* Mobile App Style Header */}
-      <motion.header 
+    <div className="min-h-screen app-container relative pb-20 md:pb-0 safe-area-inset overflow-hidden"
+      style={{ background: 'var(--color-sand)' }}
+    >
+      {/* Header */}
+      <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`sticky top-0 z-50 backdrop-blur-xl border-b shadow-sm safe-top relative ${
-          isDecember 
-            ? 'bg-gradient-to-r from-[#F7F1E8] via-[#F5DEE1] to-[#F7F1E8] border-[#D9A95C]/30'
-            : 'bg-[#F7F1E8]/95 border-[#D9A95C]/20'
-        }`}
+        className="sticky top-0 z-50 safe-top"
+        style={{
+          background: 'rgba(250,243,224,0.95)',
+          backdropFilter: 'blur(12px)',
+          borderBottom: '1px solid var(--color-border)',
+        }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -150,16 +74,27 @@ export default function HomePage() {
               onClick={() => setActiveTab('home')}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-2 md:gap-4 group touch-manipulation"
+              className="flex items-center gap-3 group touch-manipulation"
             >
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#5B8A8C] to-[#C97B84] rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg group-active:scale-95 transition-transform">
-                <span className="text-xl md:text-2xl">🙏</span>
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-xl group-active:scale-95 transition-transform"
+                style={{ background: '#FFF0E0', border: '1.5px solid var(--color-border)' }}
+              >
+                🙏
               </div>
               <div className="text-left hidden sm:block">
-                <h1 className="text-lg md:text-xl font-bold text-[#8E84A6]">
+                <h1
+                  className="text-base font-semibold leading-tight"
+                  style={{ fontFamily: 'var(--font-inknut), Georgia, serif', color: 'var(--color-text)' }}
+                >
                   Festival Calendar
                 </h1>
-                <p className="text-xs text-[#C97B84] font-medium">Cultural Heritage</p>
+                <p
+                  className="text-xs"
+                  style={{ color: 'var(--color-muted)', fontFamily: 'var(--font-manrope), system-ui, sans-serif' }}
+                >
+                  Cultural Heritage
+                </p>
               </div>
             </motion.button>
             
@@ -172,22 +107,17 @@ export default function HomePage() {
                   <motion.button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`relative px-4 py-2 rounded-lg font-semibold text-sm transition-colors flex items-center gap-2 ${
-                      isActive 
-                        ? 'text-white bg-gradient-to-r from-[#5B8A8C] to-[#C97B84] shadow-lg' 
-                        : 'text-gray-600 hover:text-[#5B8A8C] hover:bg-[#F7F1E8]'
-                    }`}
-                >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeNavTab"
-                        className="absolute inset-0 bg-gradient-to-r from-[#5B8A8C] to-[#C97B84] rounded-lg"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                    <Icon className={`w-4 h-4 relative z-10 ${isActive ? 'text-white' : 'text-gray-500'}`} />
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="relative px-4 py-2 rounded-lg text-sm flex items-center gap-2 transition-colors"
+                    style={{
+                      fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive ? 'var(--color-sand)' : 'var(--color-muted)',
+                      background: isActive ? 'var(--color-saffron)' : 'transparent',
+                    }}
+                  >
+                    <Icon className="w-4 h-4 relative z-10" />
                     <span className="relative z-10">{tab.label}</span>
                   </motion.button>
                 )
@@ -213,50 +143,47 @@ export default function HomePage() {
         </AnimatePresence>
       </main>
 
-      {/* Mobile Bottom Navigation - Always Visible */}
-      <motion.nav 
+      {/* Mobile Bottom Navigation */}
+      <motion.nav
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#F7F1E8]/98 backdrop-blur-xl border-t border-[#D9A95C]/20 shadow-2xl safe-bottom"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-50 safe-bottom"
+        style={{
+          background: 'rgba(250,243,224,0.98)',
+          backdropFilter: 'blur(12px)',
+          borderTop: '1px solid var(--color-border)',
+        }}
       >
         <div className="container mx-auto px-2 max-w-7xl">
           <div className="flex justify-around items-center h-20">
             {tabs.map((tab) => {
               const Icon = tab.icon
               const isActive = activeTab === tab.id
-              
               return (
                 <motion.button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  whileTap={{ scale: 0.9 }}
-                  className="relative flex flex-col items-center justify-center py-2 px-3 flex-1 touch-manipulation min-h-[60px]"
+                  whileTap={{ scale: 0.92 }}
+                  className="relative flex flex-col items-center justify-center py-2 px-3 flex-1 touch-manipulation min-h-[60px] rounded-xl mx-1 transition-colors"
+                  style={{
+                    background: isActive ? '#FFF0E0' : 'transparent',
+                    border: isActive ? '1.5px solid var(--color-border)' : '1.5px solid transparent',
+                  }}
                   aria-label={tab.label}
                 >
-                    {isActive && (
-                      <motion.div
-                      layoutId="activeMobileTab"
-                      className="absolute inset-0 bg-gradient-to-r from-[#5B8A8C] to-[#C97B84] rounded-2xl mx-1"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <div className="relative z-10 flex flex-col items-center gap-1">
-                    <Icon className={`w-6 h-6 transition-all duration-200 ${
-                      isActive ? 'text-white scale-110' : 'text-gray-400'
-                    }`} />
-                    <span className={`text-[10px] font-bold transition-all duration-200 ${
-                      isActive ? 'text-white' : 'text-gray-500'
-                  }`}>
+                  <Icon
+                    className="w-5 h-5 mb-1"
+                    style={{ color: isActive ? 'var(--color-saffron)' : 'var(--color-muted)' }}
+                  />
+                  <span
+                    className="text-[10px] font-semibold"
+                    style={{
+                      color: isActive ? 'var(--color-saffron)' : 'var(--color-muted)',
+                      fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                    }}
+                  >
                     {tab.label}
                   </span>
-                  </div>
-                  {isActive && (
-                    <motion.div
-                      layoutId="mobileIndicator"
-                      className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full"
-                      transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-                    />
-                  )}
                 </motion.button>
               )
             })}

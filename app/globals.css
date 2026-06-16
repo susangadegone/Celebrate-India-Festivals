@@ -1,474 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-}
+    --background: 42 60% 94%;
+    --foreground: 18 44% 12%;
+    --card: 42 40% 98%;
+    --card-foreground: 18 44% 12%;
+    --popover: 42 40% 98%;
+    --popover-foreground: 18 44% 12%;
+    --primary: 24 76% 40%;
+    --primary-foreground: 42 60% 94%;
+    --secondary: 42 40% 90%;
+    --secondary-foreground: 18 44% 12%;
+    --muted: 42 30% 88%;
+    --muted-foreground: 24 20% 46%;
+    --accent: 42 40% 90%;
+    --accent-foreground: 18 44% 12%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 42 60% 94%;
+    --border: 36 38% 82%;
+    --input: 36 38% 82%;
+    --ring: 24 76% 40%;
+    --radius: 0.75rem;
 
-@layer base {
+    --color-saffron: #B5621B;
+    --color-marigold: #D4A017;
+    --color-crimson: #8B2252;
+    --color-teal: #2A7D6E;
+    --color-sand: #FAF3E0;
+    --color-card: #FEFCF5;
+    --color-border: #E8D5B0;
+    --color-text: #2C1810;
+    --color-muted: #7a6653;
+  }
+
   * {
     @apply border-border;
   }
+
   body {
-    @apply text-gray-900;
-    background-color: #F7F1E8; /* Warm Sand background - Soft Peacock & Rose theme */
+    background-color: var(--color-sand);
+    color: var(--color-text);
+    font-family: var(--font-manrope), system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    /* Mobile app optimizations */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
     overscroll-behavior-y: none;
-    /* Prevent pull-to-refresh and bounce on iOS */
-    position: relative;
     touch-action: pan-y;
   }
 
-  .app-container {
-    min-height: 100vh;
-    -webkit-overflow-scrolling: touch;
-  }
-  
   html {
     scroll-behavior: smooth;
   }
 
-  /* Modern Typography - Soft Peacock & Rose Theme */
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    font-family: var(--font-inknut), Georgia, serif;
+    font-weight: 600;
     line-height: 1.3;
-    letter-spacing: -0.01em;
-    color: #8E84A6;
+    color: var(--color-text);
   }
 
-  h1 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-  }
-
-  h2 {
-    font-size: 2rem;
-    line-height: 1.25;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    line-height: 1.3;
-  }
-  
-  /* Soft Peacock & Rose Color Variables */
-  :root {
-    --color-saffron: #5B8A8C;
-    --color-cream: #F7F1E8;
-    --color-maroon: #C97B84;
-    --color-gold: #D9A95C;
-    --color-midnight: #8E84A6;
-  }
-
-  /* Apple-style gradient animation */
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .animate-gradient {
-    animation: gradient 5s ease infinite;
-  }
+  h1 { font-size: 2.25rem; line-height: 1.2; }
+  h2 { font-size: 1.75rem; line-height: 1.25; }
+  h3 { font-size: 1.25rem; line-height: 1.3; }
 }
 
 @layer components {
-  /* Traditional Festival Gradients */
-  .festival-gradient {
-    background: linear-gradient(135deg, #5B8A8C 0%, #C97B84 50%, #8E84A6 100%);
-  }
-
-  .spiritual-gradient {
-    background: linear-gradient(135deg, #D9A95C 0%, #C97B84 100%);
-  }
-
-  .marathi-gradient {
-    background: linear-gradient(135deg, #5B8A8C 0%, #D9A95C 100%);
-  }
-
-  .hindu-gradient {
-    background: linear-gradient(135deg, #5B8A8C 0%, #C97B84 100%);
-  }
-
-  .diwali-gradient {
-    background: linear-gradient(135deg, #D9A95C 0%, #C8AB7D 100%);
-  }
-
-  .holi-gradient {
-    background: linear-gradient(135deg, #C97B84 0%, #8E84A6 50%, #5B8A8C 100%);
-  }
-
-  .ganesh-gradient {
-    background: linear-gradient(135deg, #D9A95C 0%, #BC8C44 100%);
-  }
-
-  .navratri-gradient {
-    background: linear-gradient(135deg, #C97B84 0%, #D9A95C 50%, #7E9B76 100%);
-  }
-
-  .saffron-gradient {
-    background: linear-gradient(135deg, #5B8A8C 0%, #4A7173 100%);
-  }
-
-  .marigold-gradient {
-    background: linear-gradient(135deg, #D9A95C 0%, #BC8C44 100%);
-  }
-  
-  .festive-bg {
-    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fed7aa 100%);
-  }
-  
-  /* Interactive Elements */
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1;
-  }
-  
-  .festival-icon {
-    @apply w-8 h-8 text-emerald-600 transition-transform duration-200 hover:scale-110;
-  }
-  
-  .mantra-text {
-    @apply font-marathi text-lg leading-relaxed text-emerald-700;
-  }
-  
-  /* Chill Indian Festival Decorations */
-  .lotus-pattern {
-    background-image: radial-gradient(circle at 50% 50%, #C97B84 2px, transparent 2px);
-    background-size: 25px 25px;
-  }
-
-  .diya-glow {
-    box-shadow: 0 0 30px rgba(201, 123, 132, 0.35), 0 0 60px rgba(217, 169, 92, 0.30);
-  }
-
-  .rangoli-border {
-    border-image: linear-gradient(45deg, #C97B84, #D9A95C, #5B8A8C, #8E84A6, #7E9B76) 1;
-  }
-
-  .festival-sparkle {
-    background-image:
-      radial-gradient(circle at 20% 20%, #D9A95C 1px, transparent 1px),
-      radial-gradient(circle at 80% 80%, #C97B84 1px, transparent 1px),
-      radial-gradient(circle at 40% 60%, #5B8A8C 1px, transparent 1px);
-    background-size: 50px 50px, 30px 30px, 40px 40px;
-  }
-
-  .mandala-pattern {
-    background-image:
-      radial-gradient(circle at center, transparent 20px, #8E84A6 21px, transparent 22px),
-      radial-gradient(circle at center, transparent 40px, #5B8A8C 41px, transparent 42px);
-    background-size: 60px 60px;
-  }
-
-  .festival-lights {
-    background: linear-gradient(45deg,
-      #C97B84 0%, #D9A95C 25%, #5B8A8C 50%, #8E84A6 75%, #7E9B76 100%);
-    background-size: 200% 200%;
-    animation: festivalLights 3s ease-in-out infinite;
-  }
-
-  @keyframes festivalLights {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  .fireworks {
-    background-image:
-      radial-gradient(circle at 10% 20%, #D9A95C 2px, transparent 2px),
-      radial-gradient(circle at 90% 80%, #C97B84 2px, transparent 2px),
-      radial-gradient(circle at 50% 50%, #5B8A8C 2px, transparent 2px);
-    background-size: 80px 80px, 60px 60px, 100px 100px;
-    animation: fireworks 4s ease-in-out infinite;
-  }
-  
-  @keyframes fireworks {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-  }
-  
-  /* Minimalist App Interface */
   .app-container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    -webkit-overflow-scrolling: touch;
   }
-  
+
   .app-header {
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid rgba(217, 169, 92, 0.12);
+    background: rgba(250, 243, 224, 0.95);
+    border-bottom: 1px solid var(--color-border);
   }
-  
-  .app-content {
-    flex: 1;
-    padding-bottom: 80px; /* Space for bottom nav */
-  }
-  
+
   .app-nav {
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
-    border-top: 1px solid rgba(217, 169, 92, 0.12);
+    background: rgba(250, 243, 224, 0.98);
+    border-top: 1px solid var(--color-border);
   }
-  
-  /* Festival Decor Elements */
-  .festival-decoration {
+
+  /* Festival card — no images, accent bar + dot corner */
+  .festival-card {
+    background: var(--color-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .festival-card:hover {
+    box-shadow: 0 6px 24px rgba(44, 24, 16, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Subtle dot-grid corner — rangoli / kolam nod */
+  .dot-corner {
     position: relative;
   }
-  
-  .festival-decoration::before {
-    content: '🪔';
+
+  .dot-corner::after {
+    content: '';
     position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.5rem;
-    opacity: 0.7;
+    bottom: 0;
+    right: 0;
+    width: 64px;
+    height: 64px;
+    background-image: radial-gradient(circle, var(--color-marigold) 1px, transparent 1px);
+    background-size: 9px 9px;
+    opacity: 0.15;
+    border-radius: 0 0 12px 0;
+    pointer-events: none;
   }
-  
-  .spiritual-decoration {
-    position: relative;
+
+  /* Quote block */
+  .quote-block {
+    background: #FFF8DC;
+    border-left: 3px solid var(--color-marigold);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
   }
-  
-  .spiritual-decoration::after {
-    content: '🕉️';
-    position: absolute;
-    bottom: -15px;
-    right: 10px;
-    font-size: 1.2rem;
-    opacity: 0.6;
+
+  /* Category accent pills */
+  .pill {
+    display: inline-block;
+    font-family: var(--font-manrope), system-ui, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    background: #F0E8D0;
+    color: var(--color-muted);
   }
-  
-  /* Touch-friendly buttons */
+
+  .smooth-transition {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
   .touch-button {
     @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
   }
-  
-  /* Smooth transitions */
-  .smooth-transition {
-    @apply transition-all duration-300 ease-in-out;
-  }
-  
-  /* Modern Festival card styles */
-  .festival-card {
-    @apply bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm;
-    transition: all 0.3s ease;
-  }
-  
-  .festival-card:hover {
-    @apply shadow-xl border-emerald-300;
-    transform: translateY(-4px);
-  }
 
-  /* Paisley and Mandala Background Patterns */
-  .paisley-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 20c-5 0-10 5-10 10s5 10 10 10c3 0 5-1 7-3 2-2 3-4 3-7 0-5-5-10-10-10zm0 2c4 0 8 4 8 8 0 2-1 4-2 5-2 2-3 3-6 3-4 0-8-4-8-8s4-8 8-8z' fill='%235B8A8C' fill-opacity='0.05'/%3E%3C/svg%3E");
-  }
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #D4B890; }
 
-  .mandala-bg {
-    background-image: radial-gradient(circle at 50% 50%, rgba(217, 169, 92, 0.05) 2px, transparent 2px),
-                      radial-gradient(circle at 25% 25%, rgba(201, 123, 132, 0.04) 2px, transparent 2px),
-                      radial-gradient(circle at 75% 75%, rgba(126, 155, 118, 0.04) 2px, transparent 2px);
-    background-size: 50px 50px, 40px 40px, 60px 60px;
-  }
-
-  /* Modern Gradient text effects */
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 via-sage-600 to-mint-600;
-    font-weight: 700;
-  }
-
-  /* Glassmorphism effects */
-  .glass {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20;
-  }
-
-  .glass-strong {
-    @apply bg-white/80 backdrop-blur-xl border border-white/30;
-  }
-
-  /* Shimmer animation for loading */
-  @keyframes shimmer {
-    0% { background-position: -1000px 0; }
-    100% { background-position: 1000px 0; }
-  }
-
-  .shimmer {
-    animation: shimmer 2s infinite linear;
-    background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(217, 169, 92, 0.1) 25%,
-      rgba(217, 169, 92, 0.2) 50%,
-      rgba(217, 169, 92, 0.1) 75%,
-      transparent 100%);
-    background-size: 1000px 100%;
-  }
-
-  /* Pulse glow effect for important elements */
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(91, 138, 140, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 40px rgba(91, 138, 140, 0.5), 0 0 60px rgba(201, 123, 132, 0.35);
-    }
-  }
-
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  /* Floating animation for decorative elements */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-  }
-
-  .float-animation {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  /* Rotate animation for icons */
-  @keyframes rotate-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .rotate-slow {
-    animation: rotate-slow 20s linear infinite;
-  }
-
-  /* Scale pulse for emphasis */
-  @keyframes scale-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-
-  .scale-pulse {
-    animation: scale-pulse 2s ease-in-out infinite;
-  }
-
-  /* Custom scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-100 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-emerald-400 to-sage-400 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply from-emerald-500 to-sage-500;
-  }
-
-  /* Mobile App Optimizations */
+  /* Mobile */
   @media (max-width: 640px) {
-    .mobile-touch-target {
-      @apply min-h-[48px] min-w-[48px];
-    }
-
-    .mobile-text {
-      @apply text-base leading-relaxed;
-    }
-
-    .mobile-spacing {
-      @apply space-y-4;
-    }
+    .mobile-touch-target { @apply min-h-[48px] min-w-[48px]; }
   }
 
-  /* Safe area insets for mobile devices */
-  .safe-area-inset {
-    padding-bottom: env(safe-area-inset-bottom, 0);
-  }
-
+  .safe-area-inset { padding-bottom: env(safe-area-inset-bottom, 0); }
   .safe-area-inset-x {
     padding-left: env(safe-area-inset-left, 0);
     padding-right: env(safe-area-inset-right, 0);
   }
+  .safe-top { padding-top: env(safe-area-inset-top, 0); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
 
-  .safe-top {
-    padding-top: env(safe-area-inset-top, 0);
-  }
+  * { -webkit-tap-highlight-color: transparent; }
 
-  .safe-bottom {
-    padding-bottom: env(safe-area-inset-bottom, 0);
-  }
-
-  /* Touch manipulation for better mobile performance */
-  .touch-manipulation {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* App-like scrolling */
-  @supports (-webkit-overflow-scrolling: touch) {
-    .app-container {
-      -webkit-overflow-scrolling: touch;
-    }
-  }
-
-  /* Prevent pull-to-refresh on mobile */
-  body {
-    overscroll-behavior-y: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* App-like transitions */
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
 
-  /* Focus visible for accessibility */
   *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-emerald-500 rounded;
+    outline: 2px solid var(--color-saffron);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }

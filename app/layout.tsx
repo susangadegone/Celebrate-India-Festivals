@@ -1,8 +1,20 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inknut_Antiqua, Manrope } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inknut = Inknut_Antiqua({
+  subsets: ['latin', 'devanagari'],
+  weight: ['400', '600', '700'],
+  variable: '--font-inknut',
+  display: 'swap',
+})
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-manrope',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: '🪔 India Festival Calendar | Hindi & Marathi त्योहार | Complete Guide',
@@ -33,7 +45,7 @@ export const viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: 'cover' as const,
-  themeColor: '#5B8A8C',
+  themeColor: '#B5621B',
 }
 
 export default function RootLayout({
@@ -49,10 +61,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Festival Calendar" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#5B8A8C" />
+        <meta name="msapplication-TileColor" content="#B5621B" />
         <meta name="msapplication-tap-highlight" content="no" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inknut.variable} ${manrope.variable}`}>
         {children}
       </body>
     </html>
